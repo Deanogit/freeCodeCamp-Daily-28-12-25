@@ -57,17 +57,30 @@
 //   return result.join('');
 // }
 
+// function toScreamingSnakeCase(variableName) {
+//   return (
+//     variableName
+//       // 1. Insert an underscore before any capital letter
+//       // but only if its not at the start
+//       .replace(/([a-z])([A-Z])/g, '$1_$2')
+
+//       // 2. Convert hyphens to underscores
+//       .replace(/-/g, '_')
+
+//       // 3. Convert the whole string to uppercase
+//       .toUpperCase()
+//   );
+// }
+
 function toScreamingSnakeCase(variableName) {
   return (
     variableName
-      // 1. Insert an underscore before any capital letter
-      // but only if its not at the start
-      .replace(/([a-z])([A-Z])/g, '$1_$2')
-
-      // 2. Convert hyphens to underscores
-      .replace(/-/g, '_')
-
-      // 3. Convert the whole string to uppercase
+      // Split at hyphens, underscores, OR right before a Capital letter
+      .split(/[-_]|(?=[A-Z])/)
+      // Filter out any empty strings (to prevent underscore at start)
+      .filter((word) => word !== '')
+      // Join with underscores and uppercase everything
+      .join('_')
       .toUpperCase()
   );
 }
