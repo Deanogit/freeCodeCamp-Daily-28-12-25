@@ -35,24 +35,39 @@
 //   return variableName;
 // }
 
+// function toScreamingSnakeCase(variableName) {
+//   console.log(variableName);
+//   const arr = variableName.split('');
+//   const result = [];
+
+//   const regex = /[A-Z_-\s]/;
+//   const tester = variableName.replace(regex, '_');
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i].match(regex)) {
+//       console.log('Match!');
+//       result.push('_');
+//       //    result.push(arr[i])
+//     }
+//     result.push(arr[i].toUpperCase());
+//   }
+
+//   console.log(result);
+//   // return variableName;
+//   return result.join('');
+// }
+
 function toScreamingSnakeCase(variableName) {
-  console.log(variableName);
-  const arr = variableName.split('');
-  const result = [];
+  return (
+    variableName
+      // 1. Insert an underscore before any capital letter
+      // but only if its not at the start
+      .replace(/([a-z])([A-Z])/g, '$1_$2')
 
-  const regex = /[A-Z_-\s]/;
-  const tester = variableName.replace(regex, '_');
+      // 2. Convert hyphens to underscores
+      .replace(/-/g, '_')
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].match(regex)) {
-      console.log('Match!');
-      result.push('_');
-      //    result.push(arr[i])
-    }
-    result.push(arr[i].toUpperCase());
-  }
-
-  console.log(result);
-  // return variableName;
-  return result.join('');
+      // 3. Convert the whole string to uppercase
+      .toUpperCase()
+  );
 }
