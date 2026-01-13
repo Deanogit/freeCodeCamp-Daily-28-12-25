@@ -14,6 +14,27 @@
 // Make all letters uppercase
 // Separate words with an underscore (_)
 
+// function toScreamingSnakeCase(variableName) {
+//   console.log(variableName);
+//   const arr = variableName.split('');
+//   const result = [];
+
+//   const regex = /[A-Z_-\s]/;
+//   const tester = variableName.replace(regex, '_');
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i].match(regex)) {
+//       console.log('Match!');
+//       result.push['_'];
+//       //    result.push(arr[i])
+//     }
+//     result.push(arr[i]);
+//   }
+
+//   console.log(result);
+//   return variableName;
+// }
+
 function toScreamingSnakeCase(variableName) {
   console.log(variableName);
   const arr = variableName.split('');
@@ -25,12 +46,13 @@ function toScreamingSnakeCase(variableName) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].match(regex)) {
       console.log('Match!');
-      result.push['_'];
+      result.push('_');
       //    result.push(arr[i])
     }
-    result.push(arr[i]);
+    result.push(arr[i].toUpperCase());
   }
 
   console.log(result);
-  return variableName;
+  // return variableName;
+  return result.join('');
 }
